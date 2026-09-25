@@ -14,6 +14,7 @@ aguçamento **implementados do zero em Python/NumPy**, avaliada com PSNR e SSIM.
 trab-m1.2-pdi/
 ├── notebooks/          # notebook final (entrega principal)
 ├── src/pdi/            # funções de cada membro
+│   ├── pipeline.py     # aplica as etapas em sequência (usado no notebook)
 │   ├── gustavo/        # io_utils.py, operacoes_pontuais.py
 │   ├── heloisa/        # ruido.py, convolucao.py, suavizacao.py
 │   └── joao/           # agucamento.py, metricas.py
