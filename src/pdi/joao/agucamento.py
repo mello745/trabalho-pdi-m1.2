@@ -15,7 +15,8 @@ KERNEL_SOBEL_Y = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]], dtype=np.float64
 
 
 def _clip_uint8(img):
-    return np.clip(img, 0, 255).astype(np.uint8)
+    # arredonda antes de converter: astype sozinho trunca (199.99 viraria 199)
+    return np.clip(np.round(img), 0, 255).astype(np.uint8)
 
 
 def laplacian_sharpen(img, c=1.0):
@@ -37,14 +38,17 @@ def sobel_edges(img):
     return _clip_uint8(normalize_minmax(magnitude))
 
 
-def highboost(img, size=3, sigma=1.0, k=1.5):
+def high_boost(img, tamanho=3, sigma=1.0, k=1.5):
     """High-boost filtering: realça detalhes de alta frequência.
 
     1. borra a imagem (gaussiano);
     2. máscara = original - borrada (componente de alta frequência);
     3. saída = original + k * máscara (k > 1 => high-boost; k = 1 => unsharp masking).
+
+    A borrada fica em float (não usa filtro_gaussiano, que devolve uint8) para
+    a máscara não perder as diferenças pequenas, que são justamente os detalhes.
     """
-    kernel = gauss_create(sigma=sigma, size=size)
+    kernel = gauss_create(sigma=sigma, size=tamanho)
     borrada = conv2d_float(img, kernel)
 
     mascara = img.astype(np.float64) - borrada

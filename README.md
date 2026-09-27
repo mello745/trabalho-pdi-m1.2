@@ -12,7 +12,10 @@ aguçamento **implementados do zero em Python/NumPy**, avaliada com PSNR e SSIM.
 
 ```
 trab-m1.2-pdi/
-├── notebooks/          # notebook final (entrega principal)
+├── notebooks/
+│   ├── trabalho_m1.ipynb        # PRINCIPAL: comparativo configuração 1 × 2
+│   ├── config1_pipeline.ipynb   # configuração 1 completa
+│   └── config2_pipeline.ipynb   # configuração 2 completa
 ├── src/pdi/            # funções de cada membro
 │   ├── pipeline.py     # aplica as etapas em sequência (usado no notebook)
 │   ├── gustavo/        # io_utils.py, operacoes_pontuais.py

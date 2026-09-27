@@ -65,4 +65,6 @@ def ruido_gaussiano(imagem, sigma=15.0, semente=42, media=0.0):
     imagem_ruidosa = np.clip(imagem_ruidosa, 0, 255)
 
     # Retorna ao formato padrão de imagens de 8 bits.
-    return imagem_ruidosa.astype(np.uint8)
+    # Arredonda antes de converter: astype sozinho trunca (127.9 viraria 127)
+    # e deixaria o ruído com média negativa, escurecendo a imagem.
+    return np.round(imagem_ruidosa).astype(np.uint8)

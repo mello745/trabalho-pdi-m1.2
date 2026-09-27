@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 
+from pdi.gustavo.operacoes_pontuais import histograma
+
 def carregar_cinza(caminho, largura_max=1024):
     """
     Abre uma imagem do disco, reduz se for grande e converte para tons de cinza.
@@ -91,6 +93,9 @@ def mostrar(imagens, titulos):
     - squeeze=False garante que "eixos" seja sempre uma grade 2D, mesmo com uma
       única imagem, então eixos[linha][coluna] funciona em qualquer caso.
     """
+    if len(imagens) != len(titulos):
+        raise ValueError(f"São {len(imagens)} imagens e {len(titulos)} títulos; precisam ser iguais.")
+
     n = len(imagens)
     fig, eixos = plt.subplots(2, n, figsize=(4 * n, 6), squeeze=False)
 
@@ -101,8 +106,7 @@ def mostrar(imagens, titulos):
         eixos[0][i].axis("off")
 
         # linha 1: o histograma (quantos pixels existem de cada tom, de 0 a 255)
-        # TODO: trocar np.bincount pela nossa histograma() quando operacoes_pontuais.py estiver pronto
-        contagem = np.bincount(imagens[i].ravel(), minlength=256)
+        contagem = histograma(imagens[i])
         eixos[1][i].bar(range(256), contagem, width=1)
         eixos[1][i].set_xlim(0, 255)
 

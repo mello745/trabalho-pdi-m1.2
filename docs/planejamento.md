@@ -30,7 +30,7 @@ Todo mundo precisa saber explicar **todo** o código.
 
 | Data | Meta |
 |---|---|
-| **Ter 22/09** | Estrutura pronta. Escolher categoria ISIC + região anatômica e as 3 imagens (Gustavo). Fechar decisões em `DECISOES_TECNICAS.md` |
+| **Ter 22/09** | Estrutura pronta. Escolher categoria ISIC + região anatômica e as 3 imagens (Gustavo). Fechar decisões técnicas (parâmetros na célula de configuração do notebook) |
 | **Qua 23/09** | `convolucao.py`, `ruido.py`, `operacoes_pontuais.py`, `metricas.py` implementados e testados no notebook |
 | **Qui 24/09** | `suavizacao.py`, `agucamento.py` prontos; notebook rodando do início ao fim |
 | **Sex 25/09** | Rodar as configurações 1 e 2, gerar figuras e tabela de métricas. Revisão cruzada do código |

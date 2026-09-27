@@ -50,7 +50,8 @@ def filtro_gaussiano(imagem, tamanho=5, sigma=1.0):
     )
 
     # Garante valores válidos para uma imagem de 8 bits.
-    resultado = np.clip(resultado, 0, 255)
+    # Arredonda antes de converter: astype sozinho trunca (14.9999 viraria 14).
+    resultado = np.clip(np.round(resultado), 0, 255)
 
     return resultado.astype(np.uint8)
 
