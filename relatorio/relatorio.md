@@ -62,7 +62,7 @@ A etapa de suavização tem como objetivo reduzir o ruído artificial inserido a
 
 Para permitir a aplicação dos filtros espaciais, foi implementada uma função própria de convolução 2D. Para cada posição da imagem, uma vizinhança com o mesmo tamanho do kernel é selecionada. O kernel é rotacionado em 180 graus, os elementos correspondentes são multiplicados e os produtos são somados para gerar o novo valor do pixel.
 
-Foi utilizado padding com zeros na convolução para preservar as dimensões da imagem de saída. O resultado é calculado em `float64`, pois alguns kernels utilizados posteriormente, como Laplaciano e Sobel, podem gerar valores negativos.
+Foi utilizado padding do tipo edge na convolução, repetindo os valores mais próximos das bordas para preservar as dimensões da imagem de saída sem introduzir valores artificiais iguais a zero. O resultado é calculado em `float64`, pois alguns kernels utilizados posteriormente, como Laplaciano e Sobel, podem gerar valores negativos.
 
 #### Filtro Gaussiano
 

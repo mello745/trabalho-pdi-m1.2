@@ -102,12 +102,12 @@ def conv2d_float(imagem, kernel):
     pad_h = altura_kernel // 2
     pad_w = largura_kernel // 2
 
-    # Adiciona zeros ao redor da imagem.
+    # Replica os valores das bordas para preservar as dimensões
+    # sem introduzir pixels artificiais iguais a zero.
     imagem_padded = np.pad(
         imagem,
         ((pad_h, pad_h), (pad_w, pad_w)),
-        mode="constant",
-        constant_values=0
+        mode="edge"
     )
 
     altura, largura = imagem.shape
