@@ -76,12 +76,12 @@ pessoas editam o mesmo arquivo `.ipynb`.
 | Etapa | Configuração 1 | Configuração 2 |
 |-------|----------------|----------------|
 | 1 | Ruído gaussiano (σ = 15) | Ruído gaussiano (σ = 15) |
-| 2 | Equalização de histograma | Filtro da mediana 3×3 |
-| 3 | Filtro gaussiano 5×5 | Correção gama (γ = 1,5) |
-| 4 | High-boost (k = 1,5) | High-boost (k = 1,5) |
+| 2 | Equalização de histograma | High-boost (k = 1,5) |
+| 3 | Filtro gaussiano 5×5 | Filtro gaussiano 5×5 |
+| 4 | High-boost (k = 1,5) | Equalização de histograma |
 
-A configuração 1 realça o contraste antes de remover o ruído; a configuração 2
-remove o ruído primeiro. A análise completa está em `notebooks/trabalho_m1.ipynb`
+As duas usam as mesmas técnicas e parâmetros; a configuração 2 aplica a sequência
+da configuração 1 na ordem inversa, para medir apenas o efeito da ordem. A análise completa está em `notebooks/trabalho_m1.ipynb`
 e em `relatorio/relatorio.md`.
 
 ---
